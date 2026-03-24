@@ -1,0 +1,37 @@
+---
+const links = [
+  { label: 'Privacy Policy', href: '#' },
+  { label: 'Terms of Service', href: '#' },
+  { label: 'Twitter', href: '#' },
+  { label: 'LinkedIn', href: '#' },
+];
+---
+
+<footer class="w-full py-12 border-t border-slate-900 bg-slate-950">
+  <div
+    class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+  >
+    <!-- Brand -->
+    <div class="space-y-4">
+      <div class="text-xl font-bold text-slate-200 font-headline">Mirrorbit AI</div>
+      <p class="text-xs text-slate-500 max-w-sm font-body">
+        © {new Date().getFullYear()} Mirrorbit AI. All rights reserved. Precision software for a
+        digital-first world.
+      </p>
+    </div>
+
+    <!-- Footer Links -->
+    <div class="flex flex-wrap md:justify-end gap-8">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="text-xs text-slate-500 hover:text-blue-300 transition-colors opacity-80 hover:opacity-100 font-body"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</footer>

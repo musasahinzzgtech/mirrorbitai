@@ -1,0 +1,73 @@
+---
+const features = [
+  {
+    icon: 'bolt',
+    title: 'Speed',
+    color: 'primary',
+    borderColor: 'border-primary/50',
+    description:
+      'Real-time AI processing that delivers instant results to end-users, optimized for low-latency interactions.',
+  },
+  {
+    icon: 'verified',
+    title: 'Accuracy',
+    color: 'secondary',
+    borderColor: 'border-secondary/50',
+    description:
+      'State-of-the-art computer vision and machine learning models trained on proprietary high-quality datasets.',
+  },
+  {
+    icon: 'draw',
+    title: 'Design',
+    color: 'tertiary',
+    borderColor: 'border-tertiary/50',
+    description:
+      'Beautiful, frictionless user interfaces built for everyday use, following our high-precision optical framework.',
+  },
+];
+---
+
+<section id="about" class="py-24 px-8 relative overflow-hidden">
+  <!-- Background Pulse -->
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl pointer-events-none"
+  >
+    <div class="w-full h-full bg-secondary/5 rounded-full blur-[160px] animate-pulse"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-20">
+      <h2
+        class="text-4xl md:text-5xl font-headline font-extrabold tracking-tight mb-4 text-on-surface"
+      >
+        The Mirrorbit Advantage
+      </h2>
+      <p class="text-on-surface-variant max-w-2xl mx-auto">
+        We don't just build apps; we engineer precision instruments powered by the latest
+        breakthroughs in neural technology.
+      </p>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {
+        features.map((feature) => (
+          <div
+            class={`p-10 rounded-xl bg-surface-container-high border-b-4 ${feature.borderColor} flex flex-col items-center text-center space-y-6`}
+          >
+            <div
+              class={`w-16 h-16 rounded-full bg-${feature.color}/10 flex items-center justify-center`}
+            >
+              <span class={`material-symbols-outlined text-3xl text-${feature.color}`}>
+                {feature.icon}
+              </span>
+            </div>
+            <h4 class="text-2xl font-headline font-bold text-on-surface">{feature.title}</h4>
+            <p class="text-on-surface-variant leading-relaxed">{feature.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

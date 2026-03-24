@@ -1,0 +1,98 @@
+---
+const heroImage =
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuCGEguU0mpxisfIrAjJBFG8ZPZGou2scED--zsBeQ_gHRhqscN5Uswa0C6vR_zXjizeX9OX47ddUhmpHe_VHsrc4pGVlTan9lw34SUYtTz2xxQyYiIxeoH74tYHzbc6fufqJddQzmyHhJl_-JKKUXvOF_FShGyiM5uQzSmHOCK_sVoUuYSUtBirCv-BZD8XN9wZfDEogHFif0iylFyZiPPCSQWoQG3dxGoqhAUNnc08H9GlfiOwH5MY7pB257qj2CX9Go8iFBPi3ac';
+---
+
+<section
+  class="relative pt-40 pb-24 px-8 overflow-hidden min-h-screen flex items-center"
+>
+  <!-- Background Glows -->
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <div
+      class="absolute top-1/4 -left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]"
+    ></div>
+    <div
+      class="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]"
+    ></div>
+  </div>
+
+  <div
+    class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10"
+  >
+    <!-- Left: Copy -->
+    <div class="space-y-8">
+      <!-- Live Badge -->
+      <div
+        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-variant text-primary text-xs font-bold uppercase tracking-widest"
+      >
+        <span class="relative flex h-2 w-2">
+          <span
+            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
+          ></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+        </span>
+        Next Generation Intelligence
+      </div>
+
+      <!-- Headline -->
+      <h1
+        class="text-5xl md:text-7xl font-headline font-extrabold tracking-tighter text-on-surface leading-[1.1]"
+      >
+        Building the Future with
+        <span class="text-gradient-primary"> Artificial Intelligence.</span>
+      </h1>
+
+      <!-- Sub-copy -->
+      <p class="text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed">
+        Mirrorbit AI creates intelligent, intuitive applications that transform how
+        businesses operate and how people live. Meet the next generation of smart
+        software.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-4 pt-4">
+        <a
+          href="#products"
+          class="bg-gradient-to-br from-primary to-primary-dim text-on-primary-fixed px-8 py-4 rounded-lg font-headline font-bold transition-all hover:shadow-[0_0_20px_rgba(151,169,255,0.3)] hover:scale-[1.02] inline-block"
+        >
+          Explore Our Products
+        </a>
+        <a
+          href="#about"
+          class="border-2 border-outline-variant hover:border-primary px-8 py-4 rounded-lg font-headline font-bold transition-colors inline-block"
+        >
+          Learn More
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Visual -->
+    <div class="relative">
+      <div
+        class="relative z-10 rounded-xl overflow-hidden shadow-2xl shadow-black/50 border border-outline-variant/20"
+      >
+        <img
+          src={heroImage}
+          alt="Modern minimalist 3D abstract digital environment with glass spheres and blue glowing crystalline structures"
+          class="w-full object-cover aspect-[4/3]"
+          loading="eager"
+        />
+      </div>
+
+      <!-- Floating Info Card -->
+      <div
+        class="absolute -bottom-10 -left-10 glass-card p-6 rounded-xl border border-outline-variant/20 hidden md:block"
+      >
+        <div class="flex items-center gap-4">
+          <div class="bg-secondary p-3 rounded-lg">
+            <span class="material-symbols-outlined text-on-secondary">auto_awesome</span>
+          </div>
+          <div>
+            <p class="text-sm font-bold text-on-surface">Processing Stream</p>
+            <p class="text-xs text-on-surface-variant">99.9% Accuracy Rate</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

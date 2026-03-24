@@ -1,0 +1,85 @@
+---
+const navLinks = [
+  { label: 'Home', href: '#', active: true },
+  { label: 'Our Products', href: '#products' },
+  { label: 'About Us', href: '#about' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<nav class="fixed top-0 w-full z-50 bg-slate-950/40 backdrop-blur-xl shadow-2xl shadow-blue-900/10">
+  <div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+    <!-- Logo -->
+    <a href="/" class="text-2xl font-bold tracking-tighter text-slate-100 font-headline">
+      Mirrorbit AI
+    </a>
+
+    <!-- Desktop Links -->
+    <div class="hidden md:flex items-center space-x-10">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class={
+              link.active
+                ? 'text-blue-400 font-bold border-b-2 border-blue-500/50 pb-1 font-headline text-sm tracking-tight'
+                : 'text-slate-400 hover:text-slate-100 transition-colors font-headline text-sm font-medium tracking-tight'
+            }
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden text-slate-400 hover:text-slate-100 transition-colors"
+      aria-label="Toggle menu"
+    >
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+
+    <!-- CTA Button -->
+    <button
+      class="hidden md:block bg-primary hover:bg-primary-dim text-on-primary px-6 py-2.5 rounded-full font-headline font-bold text-sm scale-95 active:scale-90 transition-all duration-300"
+    >
+      Get in Touch
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t border-slate-800/50 bg-slate-950/90 backdrop-blur-xl"
+  >
+    <div class="px-8 py-6 space-y-4">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class={
+              link.active
+                ? 'block text-blue-400 font-bold font-headline text-sm'
+                : 'block text-slate-400 hover:text-slate-100 transition-colors font-headline text-sm font-medium'
+            }
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <button
+        class="w-full mt-4 bg-primary hover:bg-primary-dim text-on-primary px-6 py-2.5 rounded-full font-headline font-bold text-sm transition-all duration-300"
+      >
+        Get in Touch
+      </button>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+</script>

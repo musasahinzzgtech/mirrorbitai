@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ProductsSection from '../components/ProductsSection.astro';
+import WhySection from '../components/WhySection.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<Layout>
+  <NavBar />
+  <main class="relative">
+    <HeroSection />
+    <ProductsSection />
+    <WhySection />
+    <CTASection />
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,111 @@
+---
+const products = [
+  {
+    id: 'slaycal',
+    name: 'SlayCal',
+    badge: 'B2C',
+    badgeColor: 'secondary',
+    description:
+      'Your personal AI nutrition coach and chef. Snap a photo of your meal for instant macros, or scan your fridge for customized recipes.',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAo8hXOe61dAKqNdZ105mULUZCuMOjXq972fYpJUhSl2ANpkFgOQ-gCtTmlQW5jQSzD10V5rXDeTkOuuxeSpalvm2KpJit9ai0dIW6ind4-RXJrd9VYXZeTUS5ElWPt4wbgx5GS22f5LTCEdP3Ss7CTW6C1XVABSOhGIXCj4a41oUXeg85x_YkelPcYs_Z8JWsKgOAuIz5IAVoUZWsN61gFPBJqi7PZG6PdnCotpRhIvuaU7kOxjAH58Qf9a_rI-oIT3JeRb2RjdCE',
+    imageAlt: 'Close-up of a vibrant healthy poke bowl with a translucent AI interface overlay showing calorie metrics',
+    features: [
+      { icon: 'camera', label: 'Meal Scanner' },
+      { icon: 'target', label: 'Smart Goals' },
+      { icon: 'water_drop', label: 'Hydration' },
+    ],
+    featureColor: 'primary',
+    cta: { label: 'View SlayCal', icon: 'smartphone' },
+    ctaClass:
+      'w-full bg-surface-container-highest hover:bg-primary hover:text-on-primary-fixed border border-outline-variant transition-all py-4 rounded-lg font-bold flex items-center justify-center gap-2',
+  },
+  {
+    id: 'qrmenu',
+    name: 'AI QRMenu',
+    badge: 'B2B',
+    badgeColor: 'tertiary',
+    description:
+      'Transform printed menus into digital experiences in seconds. Snap a photo, let AI extract the dishes, and launch instantly with real-time order tracking.',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAc5D28JF3BNQfxycQrSCUVuq_GPL79Qqh2845sPzQrlwnbvhgjJNXdQpkHndmx8w3TjSohJfIE3-hp4x8xWf6IN6EfbYG_3S3xR2a62l1CODcIOrPkkvw2w3XuDh20op05JwkLg7BL1hgJgoTGxTPKrRyMr6jhXsEhldFwNin6MPJw2MXSeFKeN5r0HSIffaHmcpLVVynvGXU6Xq801fJ_4CvlPJRulExIph8iC4KD4aPpo5jAqdNI_wss4Ngm0eyvOtFcyxR08Yk',
+    imageAlt: 'Interior of a modern high-end restaurant with a wooden table holding a minimalist QR code stand',
+    features: [
+      { icon: 'speed', label: '2-Min Setup' },
+      { icon: 'monitoring', label: 'Live Tracking' },
+      { icon: 'apartment', label: 'Multi-Branch' },
+    ],
+    featureColor: 'tertiary',
+    cta: { label: 'Explore QRMenu Solutions', icon: 'rocket_launch' },
+    ctaClass:
+      'w-full bg-tertiary-dim hover:bg-tertiary text-on-tertiary-fixed transition-all py-4 rounded-lg font-bold flex items-center justify-center gap-2',
+  },
+];
+---
+
+<section id="products" class="py-24 px-8 bg-surface-container-low/50">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Header -->
+    <div class="mb-16">
+      <h2 class="text-4xl font-headline font-extrabold tracking-tight mb-4 text-on-surface">
+        Our Flagship Innovations
+      </h2>
+      <div class="h-1.5 w-24 bg-primary rounded-full"></div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      {
+        products.map((product) => (
+          <article class="group relative bg-surface-container rounded-xl overflow-hidden hover:bg-surface-container-high transition-colors duration-500">
+            <!-- Product Image -->
+            <div class="aspect-video overflow-hidden">
+              <img
+                src={product.image}
+                alt={product.imageAlt}
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- Product Body -->
+            <div class="p-8 space-y-6">
+              <!-- Title & Badge -->
+              <div>
+                <h3 class="text-3xl font-headline font-bold mb-2 text-on-surface">
+                  {product.name}
+                  <span
+                    class={`text-xs font-normal text-${product.badgeColor} border border-${product.badgeColor}/30 px-2 py-0.5 rounded ml-2 uppercase tracking-widest`}
+                  >
+                    {product.badge}
+                  </span>
+                </h3>
+                <p class="text-on-surface-variant leading-relaxed">{product.description}</p>
+              </div>
+
+              <!-- Feature Pills -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {product.features.map((feature) => (
+                  <div class="flex items-center gap-2 text-sm text-on-surface-variant bg-surface-variant/40 p-3 rounded-lg">
+                    <span
+                      class={`material-symbols-outlined text-${product.featureColor} text-lg`}
+                    >
+                      {feature.icon}
+                    </span>
+                    <span>{feature.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <!-- CTA Button -->
+              <button class={product.ctaClass}>
+                <span class="material-symbols-outlined">{product.cta.icon}</span>
+                {product.cta.label}
+              </button>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
