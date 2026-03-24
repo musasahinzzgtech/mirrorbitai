@@ -1,9 +1,9 @@
 ---
 const links = [
-  { label: 'Privacy Policy', href: '#' },
-  { label: 'Terms of Service', href: '#' },
-  { label: 'Twitter', href: '#' },
-  { label: 'LinkedIn', href: '#' },
+  { label: 'footer.privacy', href: '#' },
+  { label: 'footer.terms', href: '#' },
+  { label: 'footer.twitter', href: '#' },
+  { label: 'footer.linkedin', href: '#' },
 ];
 ---
 
@@ -14,7 +14,7 @@ const links = [
     <!-- Brand -->
     <div class="space-y-4">
       <div class="text-xl font-bold text-slate-200 font-headline">Mirrorbit AI</div>
-      <p class="text-xs text-slate-500 max-w-sm font-body">
+      <p class="text-xs text-slate-500 max-w-sm font-body" data-i18n="footer.copy">
         © {new Date().getFullYear()} Mirrorbit AI. All rights reserved. Precision software for a
         digital-first world.
       </p>
@@ -27,6 +27,7 @@ const links = [
           <a
             href={link.href}
             class="text-xs text-slate-500 hover:text-blue-300 transition-colors opacity-80 hover:opacity-100 font-body"
+            data-i18n={link.label}
           >
             {link.label}
           </a>

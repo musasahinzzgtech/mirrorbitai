@@ -1,9 +1,11 @@
 ---
+import LangSwitcher from './LangSwitcher.astro';
+
 const navLinks = [
-  { label: 'Home', href: '#', active: true },
-  { label: 'Our Products', href: '#products' },
-  { label: 'About Us', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'nav.home', href: '#', active: true },
+  { label: 'nav.products', href: '#products' },
+  { label: 'nav.about', href: '#about' },
+  { label: 'nav.contact', href: '#contact' },
 ];
 ---
 
@@ -25,6 +27,7 @@ const navLinks = [
                 ? 'text-blue-400 font-bold border-b-2 border-blue-500/50 pb-1 font-headline text-sm tracking-tight'
                 : 'text-slate-400 hover:text-slate-100 transition-colors font-headline text-sm font-medium tracking-tight'
             }
+            data-i18n={link.label}
           >
             {link.label}
           </a>
@@ -41,12 +44,16 @@ const navLinks = [
       <span class="material-symbols-outlined">menu</span>
     </button>
 
-    <!-- CTA Button -->
-    <button
-      class="hidden md:block bg-primary hover:bg-primary-dim text-on-primary px-6 py-2.5 rounded-full font-headline font-bold text-sm scale-95 active:scale-90 transition-all duration-300"
-    >
-      Get in Touch
-    </button>
+    <!-- Language Switcher & CTA -->
+    <div class="hidden md:flex items-center gap-4">
+      <LangSwitcher />
+      <button
+        class="bg-primary hover:bg-primary-dim text-on-primary px-6 py-2.5 rounded-full font-headline font-bold text-sm scale-95 active:scale-90 transition-all duration-300"
+        data-i18n="nav.cta"
+      >
+        Get in Touch
+      </button>
+    </div>
   </div>
 
   <!-- Mobile Menu -->
@@ -64,16 +71,21 @@ const navLinks = [
                 ? 'block text-blue-400 font-bold font-headline text-sm'
                 : 'block text-slate-400 hover:text-slate-100 transition-colors font-headline text-sm font-medium'
             }
+            data-i18n={link.label}
           >
             {link.label}
           </a>
         ))
       }
-      <button
-        class="w-full mt-4 bg-primary hover:bg-primary-dim text-on-primary px-6 py-2.5 rounded-full font-headline font-bold text-sm transition-all duration-300"
-      >
-        Get in Touch
-      </button>
+      <div class="pt-4 space-y-3 border-t border-slate-800/50">
+        <LangSwitcher />
+        <button
+          class="w-full bg-primary hover:bg-primary-dim text-on-primary px-6 py-2.5 rounded-full font-headline font-bold text-sm transition-all duration-300"
+          data-i18n="nav.cta"
+        >
+          Get in Touch
+        </button>
+      </div>
     </div>
   </div>
 </nav>

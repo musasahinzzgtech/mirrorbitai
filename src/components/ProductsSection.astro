@@ -47,7 +47,10 @@ const products = [
   <div class="max-w-7xl mx-auto">
     <!-- Section Header -->
     <div class="mb-16">
-      <h2 class="text-4xl font-headline font-extrabold tracking-tight mb-4 text-on-surface">
+      <h2
+        class="text-4xl font-headline font-extrabold tracking-tight mb-4 text-on-surface"
+        data-i18n="products.title"
+      >
         Our Flagship Innovations
       </h2>
       <div class="h-1.5 w-24 bg-primary rounded-full"></div>
@@ -80,25 +83,34 @@ const products = [
                     {product.badge}
                   </span>
                 </h3>
-                <p class="text-on-surface-variant leading-relaxed">{product.description}</p>
+                <p
+                  class="text-on-surface-variant leading-relaxed"
+                  data-i18n={product.id === 'slaycal' ? 'slaycal.description' : 'qrmenu.description'}
+                >
+                  {product.description}
+                </p>
               </div>
 
               <!-- Feature Pills -->
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {product.features.map((feature) => (
+                {product.features.map((feature, idx) => (
                   <div class="flex items-center gap-2 text-sm text-on-surface-variant bg-surface-variant/40 p-3 rounded-lg">
                     <span
                       class={`material-symbols-outlined text-${product.featureColor} text-lg`}
                     >
                       {feature.icon}
                     </span>
-                    <span>{feature.label}</span>
+                    <span
+                      data-i18n={`${product.id}.feature${idx + 1}`}
+                    >
+                      {feature.label}
+                    </span>
                   </div>
                 ))}
               </div>
 
               <!-- CTA Button -->
-              <button class={product.ctaClass}>
+              <button class={product.ctaClass} data-i18n={`${product.id}.cta`}>
                 <span class="material-symbols-outlined">{product.cta.icon}</span>
                 {product.cta.label}
               </button>

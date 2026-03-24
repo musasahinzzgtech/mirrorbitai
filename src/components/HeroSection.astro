@@ -26,12 +26,15 @@ const heroImage =
       <h1
         class="text-5xl md:text-7xl font-headline font-extrabold tracking-tighter text-on-surface leading-[1.1]"
       >
-        Building the Future with
-        <span class="text-gradient-primary"> Artificial Intelligence.</span>
+        <span data-i18n="hero.headline.1">Building the Future with</span>
+        <span class="text-gradient-primary" data-i18n="hero.headline.2"> Artificial Intelligence.</span>
       </h1>
 
       <!-- Sub-copy -->
-      <p class="text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed">
+      <p
+        class="text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed"
+        data-i18n="hero.description"
+      >
         Mirrorbit AI creates intelligent, intuitive applications that transform how
         businesses operate and how people live. Meet the next generation of smart
         software.
@@ -42,12 +45,14 @@ const heroImage =
         <a
           href="#products"
           class="bg-gradient-to-br from-primary to-primary-dim text-on-primary-fixed px-8 py-4 rounded-lg font-headline font-bold transition-all hover:shadow-[0_0_20px_rgba(151,169,255,0.3)] hover:scale-[1.02] inline-block"
+          data-i18n="hero.cta.primary"
         >
           Explore Our Products
         </a>
         <a
           href="#about"
           class="border-2 border-outline-variant hover:border-primary px-8 py-4 rounded-lg font-headline font-bold transition-colors inline-block"
+          data-i18n="hero.cta.secondary"
         >
           Learn More
         </a>
@@ -76,8 +81,8 @@ const heroImage =
             <span class="material-symbols-outlined text-on-secondary">auto_awesome</span>
           </div>
           <div>
-            <p class="text-sm font-bold text-on-surface">Processing Stream</p>
-            <p class="text-xs text-on-surface-variant">99.9% Accuracy Rate</p>
+            <p class="text-sm font-bold text-on-surface" data-i18n="hero.card.title">Processing Stream</p>
+            <p class="text-xs text-on-surface-variant" data-i18n="hero.card.subtitle">99.9% Accuracy Rate</p>
           </div>
         </div>
       </div>

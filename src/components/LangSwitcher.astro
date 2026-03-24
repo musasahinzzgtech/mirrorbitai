@@ -1,0 +1,66 @@
+---
+---
+
+<div class="flex items-center gap-2 bg-surface-variant/40 rounded-full p-1">
+  <button
+    id="lang-en"
+    class="lang-btn active px-4 py-2 rounded-full text-sm font-bold transition-all"
+    data-lang="en"
+  >
+    EN
+  </button>
+  <button
+    id="lang-tr"
+    class="lang-btn px-4 py-2 rounded-full text-sm font-bold transition-all"
+    data-lang="tr"
+  >
+    TR
+  </button>
+</div>
+
+<style>
+  .lang-btn {
+    @apply text-on-surface-variant;
+  }
+
+  .lang-btn.active {
+    @apply bg-primary text-on-primary-fixed;
+  }
+</style>
+
+<script>
+  const langBtns = document.querySelectorAll('.lang-btn');
+  const currentLang = localStorage.getItem('lang') || 'en';
+
+  // Set active button on load
+  langBtns.forEach((btn) => {
+    if (btn.getAttribute('data-lang') === currentLang) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  // Handle language switching
+  langBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang');
+      localStorage.setItem('lang', lang);
+
+      // Update active state
+      langBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Update page content
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        const translations = window.__translations || {};
+        const text = translations[lang]?.[key] || key;
+        el.textContent = text.replace('{year}', new Date().getFullYear());
+      });
+
+      // Update document language
+      document.documentElement.lang = lang;
+    });
+  });
+</script>
