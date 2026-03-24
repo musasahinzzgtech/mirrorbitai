@@ -4,88 +4,120 @@ const heroImage =
 ---
 
 <section
-  class="relative pt-40 pb-24 px-8 overflow-hidden min-h-screen flex items-center"
+  class="relative pt-48 pb-32 px-8 overflow-hidden min-h-screen flex items-center lg:pt-32"
 >
-  <!-- Background Glows -->
-  <div class="absolute inset-0 z-0 pointer-events-none">
+  <!-- Animated background elements -->
+  <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+    <!-- Primary glow (top-left) -->
     <div
-      class="absolute top-1/4 -left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]"
+      class="absolute -top-40 -left-40 w-[600px] h-[600px] bg-primary/15 rounded-full blur-[120px] opacity-40"
     ></div>
+    <!-- Secondary glow (bottom-right) -->
     <div
-      class="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]"
+      class="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[100px] opacity-30"
+    ></div>
+    <!-- Tertiary accent -->
+    <div
+      class="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-tertiary/5 rounded-full blur-[80px] opacity-20"
     ></div>
   </div>
 
-  <div
-    class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10"
-  >
-    <!-- Left: Copy -->
-    <div class="space-y-8">
-  
-      <!-- Headline -->
-      <h1
-        class="text-5xl md:text-7xl font-headline font-extrabold tracking-tighter text-on-surface leading-[1.1]"
-      >
-        <span data-i18n="hero.headline.1">Building the Future with</span>
-        <span class="text-gradient-primary" data-i18n="hero.headline.2"> Artificial Intelligence.</span>
-      </h1>
+  <div class="max-w-7xl mx-auto w-full relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+      <!-- Left: Copy (wider on desktop) -->
+      <div class="lg:col-span-5 space-y-8" data-animation="animate-fade-up animate-slide-in-left">
+        <!-- Premium heading with tight letter-spacing -->
+        <div class="space-y-4">
+          <h1
+            class="text-6xl lg:text-8xl font-headline font-extrabold tracking-tight text-on-surface leading-[1.05]"
+          >
+            <span data-i18n="hero.headline.1" class="block">Building the</span>
+            <span class="block">
+              <span class="text-gradient-primary" data-i18n="hero.headline.2">Future</span>
+              <span class="block">with AI.</span>
+            </span>
+          </h1>
+        </div>
 
-      <!-- Sub-copy -->
-      <p
-        class="text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed"
-        data-i18n="hero.description"
-      >
-        Mirrorbit AI creates intelligent, intuitive applications that transform how
-        businesses operate and how people live. Meet the next generation of smart
-        software.
-      </p>
-
-      <!-- CTAs -->
-      <div class="flex flex-wrap gap-4 pt-4">
-        <a
-          href="#products"
-          class="bg-gradient-to-br from-primary to-primary-dim text-on-primary-fixed px-8 py-4 rounded-lg font-headline font-bold transition-all hover:shadow-[0_0_20px_rgba(151,169,255,0.3)] hover:scale-[1.02] inline-block"
-          data-i18n="hero.cta.primary"
+        <!-- Refined description with better spacing -->
+        <p
+          class="text-lg text-on-surface-variant leading-relaxed max-w-lg font-light tracking-wide"
+          data-i18n="hero.description"
         >
-          Explore Our Products
-        </a>
-        <a
-          href="#about"
-          class="border-2 border-outline-variant hover:border-primary px-8 py-4 rounded-lg font-headline font-bold transition-colors inline-block"
-          data-i18n="hero.cta.secondary"
-        >
-          Learn More
-        </a>
-      </div>
-    </div>
+          Mirrorbit AI creates intelligent, intuitive applications that transform how
+          businesses operate and how people live. Meet the next generation of smart
+          software.
+        </p>
 
-    <!-- Right: Visual -->
-    <div class="relative">
-      <div
-        class="relative z-10 rounded-xl overflow-hidden shadow-2xl shadow-black/50 border border-outline-variant/20"
-      >
-        <img
-          src={heroImage}
-          alt="Modern minimalist 3D abstract digital environment with glass spheres and blue glowing crystalline structures"
-          class="w-full object-cover aspect-[4/3]"
-          loading="eager"
-        />
+        <!-- Premium CTAs with premium styling -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-6">
+          <a
+            href="#products"
+            class="group relative px-8 py-4 rounded-lg font-headline font-bold text-on-primary-fixed bg-gradient-to-r from-primary to-primary-dim overflow-hidden transition-all duration-300 cubic-bezier(0.16, 1, 0.3, 1) hover:scale-105 hover:shadow-[0_20px_60px_rgba(151,169,255,0.3)] active:scale-95 inline-flex items-center justify-center gap-2"
+            data-i18n="hero.cta.primary"
+          >
+            <span class="relative z-10">Explore Products</span>
+            <span class="material-symbols-outlined relative z-10 text-lg">arrow_forward</span>
+          </a>
+          <a
+            href="#about"
+            class="glass-btn px-8 py-4 rounded-lg font-headline font-bold text-on-surface inline-flex items-center justify-center gap-2"
+            data-i18n="hero.cta.secondary"
+          >
+            <span>Learn More</span>
+            <span class="material-symbols-outlined text-lg">help_outline</span>
+          </a>
+        </div>
       </div>
 
-      <!-- Floating Info Card -->
-      <div
-        class="absolute -bottom-10 -left-10 glass-card p-6 rounded-xl border border-outline-variant/20 hidden md:block"
-      >
-        <div class="flex items-center gap-4">
-          <div class="bg-secondary p-3 rounded-lg">
-            <span class="material-symbols-outlined text-on-secondary">auto_awesome</span>
+      <!-- Right: Visual (premium glass and asymmetrical) -->
+      <div class="lg:col-span-7 relative" data-animation="animate-fade-up animate-slide-in-right animation-delay-200">
+        <!-- Main hero image with deep glass effect -->
+        <div class="relative">
+          <!-- Image container with premium border and blur -->
+          <div
+            class="relative rounded-2xl overflow-hidden premium-card group cursor-pointer"
+          >
+            <img
+              src={heroImage}
+              alt="Modern minimalist 3D abstract digital environment with glass spheres and blue glowing crystalline structures"
+              class="w-full h-auto object-cover aspect-[5/4] transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-110"
+              loading="eager"
+            />
+            <!-- Overlay gradient on hover -->
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-300"
+            ></div>
           </div>
-          <div>
-            <p class="text-sm font-bold text-on-surface" data-i18n="hero.card.title">Processing Stream</p>
-            <p class="text-xs text-on-surface-variant" data-i18n="hero.card.subtitle">99.9% Accuracy Rate</p>
+
+          <!-- Floating stats card (redesigned with asymmetry) -->
+          <div
+            class="absolute -bottom-6 -left-6 glass-card p-6 rounded-2xl backdrop-blur-md hidden md:block animate-float"
+            data-animation="animate-scale-in animation-delay-300"
+          >
+            <div class="flex items-center gap-4">
+              <div class="relative">
+                <div class="absolute inset-0 bg-primary/20 blur-lg rounded-lg"></div>
+                <div class="relative bg-primary/10 p-3 rounded-lg border border-primary/20">
+                  <span class="material-symbols-outlined text-primary text-2xl">bolt</span>
+                </div>
+              </div>
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-1">Performance</p>
+                <p class="text-sm font-bold text-on-surface" data-i18n="hero.card.title">99.9% Uptime</p>
+                <p class="text-xs text-on-surface-variant" data-i18n="hero.card.subtitle">Real-time Processing</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* Custom cubic-bezier easing for hero elements */
+  :global(.cubic-bezier\(0\.16,\ 1,\ 0\.3,\ 1\)) {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+</style>

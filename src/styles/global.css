@@ -11,23 +11,281 @@
     background-color: #060e20;
     color: #dee5ff;
     font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Animated gradient mesh background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(circle at 20% 50%, rgba(151, 169, 255, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(193, 128, 255, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(153, 247, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Noise texture overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='2' /%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
   }
 }
 
 @layer components {
+  /* Premium Material Symbols */
   .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
+  /* Deep Glassmorphism */
   .glass-card {
-    background: rgba(25, 37, 64, 0.4);
-    backdrop-filter: blur(20px);
+    background: rgba(15, 25, 48, 0.4);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid rgba(167, 179, 196, 0.15);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
+  .glass-card:hover {
+    background: rgba(15, 25, 48, 0.5);
+    border-color: rgba(167, 179, 196, 0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Premium Glass Button */
+  .glass-btn {
+    background: rgba(151, 169, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(151, 169, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s;
+  }
+
+  .glass-btn:hover::before {
+    left: 100%;
+  }
+
+  .glass-btn:hover {
+    background: rgba(151, 169, 255, 0.15);
+    border-color: rgba(151, 169, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(151, 169, 255, 0.2);
+  }
+
+  .glass-btn:active {
+    transform: translateY(0);
+  }
+
+  /* Gradient Text */
   .text-gradient-primary {
     background: linear-gradient(135deg, #97a9ff 0%, #3e65ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    letter-spacing: -0.02em;
+  }
+
+  /* Premium Card */
+  .premium-card {
+    background: rgba(25, 37, 64, 0.5);
+    border: 1px solid rgba(167, 179, 196, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 1rem;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .premium-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(151, 169, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+
+  .premium-card:hover {
+    border-color: rgba(167, 179, 196, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+  }
+
+  .premium-card:hover::before {
+    opacity: 1;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* KEYFRAME ANIMATIONS */
+/* ─────────────────────────────────────────────────────────────────── */
+
+@keyframes fadeUpIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* ANIMATION UTILITIES */
+/* ─────────────────────────────────────────────────────────────────── */
+
+.animate-fade-up {
+  animation: fadeUpIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Staggered animation delays */
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
