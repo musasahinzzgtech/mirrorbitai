@@ -1,84 +1,105 @@
 ---
 import LangSwitcher from './LangSwitcher.astro';
 
+const pathname = Astro.url.pathname;
+
 const navLinks = [
-  { label: 'nav.home', href: '#', sectionId: null },
-  { label: 'nav.products', href: '#products', sectionId: 'products' },
-  { label: 'nav.about', href: '#about', sectionId: 'about' },
-  { label: 'nav.contact', href: '#contact', sectionId: 'contact' },
+  { label: 'Products',  i18n: 'nav.products', href: '/#products', isPage: false },
+  { label: 'Services',  i18n: null,            href: '/services',  isPage: true  },
+  { label: 'About',     i18n: 'nav.about',     href: '/about',     isPage: true  },
+  { label: 'Blog',      i18n: null,            href: '/blog',      isPage: true  },
+  { label: 'Contact',   i18n: 'nav.contact',   href: '/contact',   isPage: true  },
 ];
 ---
 
-<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100 shadow-sm shadow-black/5 transition-all duration-300">
-  <div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-16">
+<nav
+  class="fixed top-0 w-full z-50 transition-all duration-300"
+  style="background: rgba(251,251,253,0.85); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(210,210,215,0.5);"
+>
+  <div class="flex justify-between items-center max-w-7xl mx-auto px-6 lg:px-10" style="height: 52px;">
     <!-- Logo -->
-    <a href="/" class="text-lg font-bold tracking-tight text-gray-900 font-headline hover:text-black transition-colors duration-300">
+    <a
+      href="/"
+      class="text-[17px] font-semibold text-[#1D1D1F] hover:opacity-75 transition-opacity tracking-tight"
+      style="letter-spacing: -0.02em;"
+    >
       Mirrorbit AI
     </a>
 
     <!-- Desktop Links -->
-    <div class="hidden md:flex items-center space-x-8">
-      {
-        navLinks.map((link) => (
+    <div class="hidden md:flex items-center gap-7">
+      {navLinks.map((link) => {
+        const isActive = link.isPage &&
+          (pathname === link.href || pathname.startsWith(link.href + '/'));
+        return (
           <a
             href={link.href}
-            class="nav-link text-gray-500 hover:text-gray-900 transition-all duration-300 font-headline text-sm font-medium tracking-tight pb-1 border-b-2 border-transparent hover:border-gray-900/20"
-            data-section={link.sectionId}
-            data-i18n={link.label}
+            class={`nav-link${isActive ? ' page-active' : ''}`}
+            data-i18n={link.i18n || undefined}
           >
             {link.label}
           </a>
-        ))
-      }
+        );
+      })}
     </div>
 
-    <!-- Mobile Menu Button -->
-    <button
-      id="mobile-menu-btn"
-      class="md:hidden text-gray-500 hover:text-gray-900 transition-colors"
-      aria-label="Toggle menu"
-    >
-      <span class="material-symbols-outlined">menu</span>
-    </button>
-
-    <!-- Language Switcher & CTA -->
+    <!-- Right side -->
     <div class="hidden md:flex items-center gap-4">
       <LangSwitcher />
-      <button
-        class="bg-gray-900 hover:bg-black text-white px-5 py-2 rounded-full font-headline font-bold text-sm transition-all duration-300"
+      <a
+        href="/contact"
+        class="apple-btn-dark"
+        style="padding: 7px 16px; font-size: 13px;"
         data-i18n="nav.cta"
       >
         Get in Touch
-      </button>
+      </a>
     </div>
+
+    <!-- Mobile toggle -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden text-[#1D1D1F] hover:opacity-70 transition-opacity p-2 -mr-2"
+      aria-label="Toggle menu"
+    >
+      <span class="material-symbols-outlined" style="font-size: 22px; font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;">menu</span>
+    </button>
   </div>
 
-  <!-- Mobile Menu -->
+  <!-- Mobile menu -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden border-t border-gray-100 bg-white/95 backdrop-blur-xl"
+    class="hidden md:hidden border-t"
+    style="background: rgba(251,251,253,0.97); backdrop-filter: blur(20px); border-color: rgba(210,210,215,0.6);"
   >
-    <div class="px-8 py-5 space-y-4">
-      {
-        navLinks.map((link) => (
+    <div class="px-4 py-3 space-y-0.5">
+      {navLinks.map((link) => {
+        const isActive = link.isPage &&
+          (pathname === link.href || pathname.startsWith(link.href + '/'));
+        return (
           <a
             href={link.href}
-            class="mobile-nav-link block text-gray-500 hover:text-gray-900 transition-colors font-headline text-sm font-medium"
-            data-section={link.sectionId}
-            data-i18n={link.label}
+            class={`block px-4 py-3 rounded-xl text-[15px] font-normal transition-colors ${
+              isActive
+                ? 'text-[#1D1D1F] bg-[#F5F5F7] font-medium'
+                : 'text-[#1D1D1F] hover:bg-[#F5F5F7]'
+            }`}
+            data-i18n={link.i18n || undefined}
           >
             {link.label}
           </a>
-        ))
-      }
-      <div class="pt-4 space-y-3 border-t border-gray-100">
+        );
+      })}
+      <div class="pt-4 pb-2 px-4 space-y-3 border-t" style="border-color: rgba(210,210,215,0.6);">
         <LangSwitcher />
-        <button
-          class="w-full bg-gray-900 hover:bg-black text-white px-5 py-2 rounded-full font-headline font-bold text-sm transition-all duration-300"
+        <a
+          href="/contact"
+          class="apple-btn-dark w-full justify-center"
+          style="font-size: 15px;"
           data-i18n="nav.cta"
         >
           Get in Touch
-        </button>
+        </a>
       </div>
     </div>
   </div>
@@ -86,56 +107,8 @@ const navLinks = [
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    // Mobile menu toggle
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
     btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
-
-    // Active nav link highlighting based on scroll position
-    function updateActiveNav() {
-      const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
-      const sections = Array.from(navLinks).map(link => ({
-        link,
-        sectionId: link.getAttribute('data-section'),
-      }));
-
-      // Reset all links
-      navLinks.forEach(link => {
-        link.classList.remove('text-black', 'font-bold', 'border-black');
-        link.classList.add('text-gray-500', 'font-medium');
-      });
-
-      // Mark home as active if at top
-      if (window.scrollY < 100) {
-        sections[0]?.link?.classList.add('text-black', 'font-bold', 'border-black');
-        sections[0]?.link?.classList.remove('text-gray-500', 'font-medium');
-        return;
-      }
-
-      // Check which section is in view
-      for (const { link, sectionId } of sections) {
-        if (!sectionId) continue;
-
-        const section = document.getElementById(sectionId);
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          if (rect.top < window.innerHeight / 2 && rect.bottom > 0) {
-            link.classList.add('text-black', 'font-bold', 'border-black');
-            link.classList.remove('text-gray-500', 'font-medium');
-            break;
-          }
-        }
-      }
-    }
-
-    window.addEventListener('scroll', updateActiveNav, { passive: true });
-    updateActiveNav();
   });
 </script>
-
-<style>
-  .nav-link,
-  .mobile-nav-link {
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-</style>

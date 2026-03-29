@@ -5,13 +5,15 @@ A high-performance, multi-language Astro website for Mirrorbit AI with full i18n
 ## ✨ Features
 
 ### 🌐 Multi-Language Support (i18n)
+
 - **English (EN)** and **Turkish (TR)** — fully translated
 - Language switcher in navbar + mobile menu
 - Persists user preference in localStorage
 - 19+ text elements are translatable via `data-i18n` attributes
 
 ### 🚀 SEO Optimized
-- ✅ Meta tags (title, description, og:*, twitter:*)
+
+- ✅ Meta tags (title, description, og:_, twitter:_)
 - ✅ Canonical URLs
 - ✅ JSON-LD structured data (Organization, Product, WebSite, SearchAction)
 - ✅ Sitemap.xml + robots.txt
@@ -20,6 +22,7 @@ A high-performance, multi-language Astro website for Mirrorbit AI with full i18n
 - ✅ Fast page speed (single page, optimized)
 
 ### 📱 Responsive Design
+
 - Mobile-first approach
 - Touch-friendly components (44x44px minimum)
 - Hamburger menu on mobile
@@ -35,6 +38,7 @@ npm run build  # Production build → /dist/
 ```
 
 ### Test Multi-Language
+
 Click the **EN/TR** toggle in the top-right navbar. All text updates instantly.
 
 ## 📁 Project Structure
@@ -46,7 +50,7 @@ src/
 ├── components/
 │   ├── NavBar.astro           ← Language switcher, mobile menu
 │   ├── HeroSection.astro      ← Main headline + CTA
-│   ├── ProductsSection.astro  ← SlayCal + AI QRMenu cards
+│   ├── ProductsSection.astro  ← SlayCal + Restaurant Managment System cards
 │   ├── WhySection.astro       ← Speed / Accuracy / Design features
 │   ├── CTASection.astro       ← Call-to-action banner
 │   ├── Footer.astro           ← Links + copyright
@@ -67,10 +71,12 @@ public/
 ## 🌍 Language Support
 
 ### Current Languages
+
 - ✅ **English** (en)
 - ✅ **Turkish** (tr)
 
 ### Adding a New Language
+
 1. Open `src/i18n/translations.js`
 2. Add a new language object:
    ```javascript
@@ -84,6 +90,7 @@ public/
 4. Done! The site auto-updates when button is clicked
 
 ### Translation Keys (19 total)
+
 ```
 nav.home, nav.products, nav.about, nav.contact, nav.cta
 hero.headline.1, hero.headline.2, hero.description, hero.cta.primary, hero.cta.secondary
@@ -100,7 +107,9 @@ footer.copy, footer.privacy, footer.terms, footer.twitter, footer.linkedin
 ## 🎨 Customization
 
 ### Colors
+
 Edit `tailwind.config.mjs` — all custom colors follow Material Design 3:
+
 ```javascript
 colors: {
   'primary': '#97a9ff',      // Main brand blue
@@ -111,10 +120,12 @@ colors: {
 ```
 
 ### Fonts
+
 - **Headline:** Manrope (bold, 600–800 weights)
 - **Body:** Inter (regular, 400–600 weights)
 
 ### Content
+
 - Update component files for structure changes
 - Use `src/i18n/translations.js` for text changes
 - Images: Update URLs in component props
@@ -122,9 +133,10 @@ colors: {
 ## 📊 SEO Details
 
 ### Implemented
+
 - ✅ Title, description meta tags
-- ✅ Open Graph (og:*) for social sharing
-- ✅ Twitter Card (twitter:*)
+- ✅ Open Graph (og:\*) for social sharing
+- ✅ Twitter Card (twitter:\*)
 - ✅ Canonical link
 - ✅ robots meta, keywords, author
 - ✅ JSON-LD (Organization, WebSite, Product, ContactPoint)
@@ -135,6 +147,7 @@ colors: {
 - ✅ Font preload directives
 
 ### Before Going Live
+
 1. **Add og-image.jpg** to `/public/` (1200x630px)
 2. **Add Google Analytics 4** to `Layout.astro`:
    ```astro
@@ -155,6 +168,7 @@ npm run build
 Output: `/dist/index.html` + static assets
 
 **Deploy to:**
+
 - **Vercel:** `vercel`
 - **Netlify:** Connect GitHub repo, auto-deploys
 - **Railway:** Set build command: `npm run build`, output: `dist`
@@ -170,12 +184,14 @@ Output: `/dist/index.html` + static assets
 ## 📋 Files Modified for i18n + SEO
 
 **New files:**
+
 - `src/i18n/translations.js` — Translation system
 - `src/components/LangSwitcher.astro` — Language switcher UI
 - `SEO.md` — Detailed SEO strategy
 - `public/sitemap.xml`, `public/robots.txt`
 
 **Updated files:**
+
 - `src/layouts/Layout.astro` — Meta tags, JSON-LD schema, i18n init script
 - All `src/components/*.astro` — `data-i18n` attributes on text
 - `astro.config.mjs` — Tailwind integration

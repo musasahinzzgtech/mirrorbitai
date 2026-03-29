@@ -1,0 +1,335 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const contactItems = [
+  { icon: 'mail',       label: 'Email',         value: 'hello@mirrorbitai.com' },
+  { icon: 'location_on', label: 'Location',     value: 'Istanbul, Turkey' },
+  { icon: 'schedule',   label: 'Response time', value: 'Within 24 hours' },
+];
+
+const topics = [
+  { value: 'product',     label: 'Product inquiry' },
+  { value: 'services',    label: 'Services' },
+  { value: 'partnership', label: 'Partnership' },
+  { value: 'press',       label: 'Press' },
+  { value: 'other',       label: 'Other' },
+];
+---
+
+<Layout
+  title="Contact — Mirrorbit AI"
+  description="Get in touch with the Mirrorbit AI team. We'd love to hear about your project."
+>
+  <NavBar />
+  <main class="pt-[52px]">
+
+    <section class="py-24 px-6 lg:px-10">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+
+          <!-- Left: Info -->
+          <div>
+            <p class="text-[12px] font-medium tracking-[0.1em] uppercase mb-4 text-[#6E6E73]">
+              Contact
+            </p>
+            <h1 class="headline-display text-[56px] lg:text-[72px] text-[#1D1D1F] mb-6">
+              Let's talk.
+            </h1>
+            <p class="body-copy text-[17px] mb-12 max-w-sm">
+              Whether you have a project in mind, a question about our products, or just want
+              to say hello — we'd love to hear from you.
+            </p>
+
+            <div class="space-y-7">
+              {contactItems.map((item) => (
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-11 h-11 rounded-2xl bg-[#F5F5F7] flex items-center justify-center flex-shrink-0"
+                    style="border: 1px solid rgba(210,210,215,0.8);"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[#1D1D1F]"
+                      style="font-size: 18px; font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;"
+                    >
+                      {item.icon}
+                    </span>
+                  </div>
+                  <div>
+                    <p class="text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-widest mb-0.5">
+                      {item.label}
+                    </p>
+                    <p class="text-[15px] font-medium text-[#1D1D1F]">{item.value}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Right: Form card -->
+          <div
+            class="rounded-[24px] bg-white"
+            style="border: 1px solid #D2D2D7; padding: 40px 36px;"
+          >
+            <!-- Form container -->
+            <div id="form-container">
+              <h2
+                class="text-[22px] font-semibold text-[#1D1D1F] mb-1"
+                style="letter-spacing: -0.03em;"
+              >
+                Send a message
+              </h2>
+              <p class="text-[14px] text-[#6E6E73] mb-8">
+                We typically respond within one business day.
+              </p>
+
+              <form id="contact-form" novalidate class="space-y-5">
+                <!-- Name row -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="field-group">
+                    <label class="field-label" for="first-name">First name</label>
+                    <input
+                      id="first-name"
+                      name="first-name"
+                      type="text"
+                      placeholder="John"
+                      required
+                      autocomplete="given-name"
+                      class="contact-input"
+                    />
+                    <p class="field-error">Please enter your first name.</p>
+                  </div>
+                  <div class="field-group">
+                    <label class="field-label" for="last-name">Last name</label>
+                    <input
+                      id="last-name"
+                      name="last-name"
+                      type="text"
+                      placeholder="Doe"
+                      required
+                      autocomplete="family-name"
+                      class="contact-input"
+                    />
+                    <p class="field-error">Please enter your last name.</p>
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="field-group">
+                  <label class="field-label" for="email">Email address</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="john@company.com"
+                    required
+                    autocomplete="email"
+                    class="contact-input"
+                  />
+                  <p class="field-error">Please enter a valid email address.</p>
+                </div>
+
+                <!-- Topic -->
+                <div class="field-group">
+                  <label class="field-label" for="topic">Topic</label>
+                  <div class="select-wrapper">
+                    <select
+                      id="topic"
+                      name="topic"
+                      required
+                      class="contact-input"
+                    >
+                      <option value="" disabled selected>Select a topic</option>
+                      {topics.map(t => <option value={t.value}>{t.label}</option>)}
+                    </select>
+                    <span
+                      class="select-chevron material-symbols-outlined"
+                      style="font-size: 18px; font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;"
+                    >expand_more</span>
+                  </div>
+                  <p class="field-error">Please select a topic.</p>
+                </div>
+
+                <!-- Message -->
+                <div class="field-group">
+                  <label class="field-label" for="message">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Tell us about your project or question..."
+                    required
+                    class="contact-input"
+                    style="resize: vertical; min-height: 130px;"
+                  ></textarea>
+                  <p class="field-error">Please write a message.</p>
+                </div>
+
+                <!-- Submit -->
+                <button
+                  id="submit-btn"
+                  type="submit"
+                  class="apple-btn-dark w-full justify-center mt-2"
+                  style="padding: 15px 24px; font-size: 15px;"
+                >
+                  <span id="btn-label">Send Message</span>
+                  <span
+                    id="btn-icon"
+                    class="material-symbols-outlined"
+                    style="font-size: 17px; font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;"
+                  >send</span>
+                  <span id="btn-spinner" class="hidden" style="width:18px;height:18px;">
+                    <svg viewBox="0 0 24 24" fill="none" style="width:18px;height:18px;animation:spin 0.8s linear infinite;">
+                      <circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"/>
+                      <path d="M12 2a10 10 0 0 1 10 10" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                </button>
+              </form>
+            </div>
+
+            <!-- Success state (hidden by default) -->
+            <div id="success-message" class="hidden text-center py-8">
+              <div
+                class="w-14 h-14 rounded-full bg-[#F5F5F7] flex items-center justify-center mx-auto mb-5"
+                style="border: 1px solid #D2D2D7;"
+              >
+                <span
+                  class="material-symbols-outlined text-[#1D1D1F]"
+                  style="font-size: 26px; font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;"
+                >check</span>
+              </div>
+              <h3
+                class="text-[22px] font-semibold text-[#1D1D1F] mb-2"
+                style="letter-spacing: -0.03em;"
+              >
+                Message sent!
+              </h3>
+              <p class="text-[15px] text-[#6E6E73] max-w-xs mx-auto">
+                Thanks for reaching out. We'll get back to you within one business day.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .field-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1D1D1F;
+    margin-bottom: 7px;
+    letter-spacing: -0.01em;
+  }
+
+  .field-error {
+    display: none;
+    font-size: 12px;
+    color: #FF3B30;
+    margin-top: 5px;
+  }
+
+  .field-group.has-error .field-error {
+    display: block;
+  }
+
+  .field-group.has-error .contact-input {
+    border-color: #FF3B30;
+    box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.08);
+  }
+
+  .select-wrapper {
+    position: relative;
+  }
+
+  .select-wrapper .contact-input {
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  .select-chevron {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6E6E73;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnLabel = document.getElementById('btn-label');
+    const btnIcon = document.getElementById('btn-icon');
+    const btnSpinner = document.getElementById('btn-spinner');
+    const formContainer = document.getElementById('form-container');
+    const successMsg = document.getElementById('success-message');
+
+    if (!form) return;
+
+    // Clear error on input
+    form.querySelectorAll('.contact-input').forEach((input) => {
+      input.addEventListener('input', () => {
+        input.closest('.field-group')?.classList.remove('has-error');
+      });
+      input.addEventListener('change', () => {
+        input.closest('.field-group')?.classList.remove('has-error');
+      });
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Validate each required field
+      let valid = true;
+      form.querySelectorAll('[required]').forEach((field) => {
+        const group = field.closest('.field-group');
+        const isEmpty = !field.value.trim();
+        const isInvalidEmail =
+          field.type === 'email' && field.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value);
+
+        if (isEmpty || isInvalidEmail) {
+          group?.classList.add('has-error');
+          valid = false;
+        } else {
+          group?.classList.remove('has-error');
+        }
+      });
+
+      if (!valid) {
+        // Scroll to first error
+        const firstError = form.querySelector('.has-error .contact-input');
+        firstError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // Loading state
+      if (submitBtn) submitBtn.setAttribute('disabled', 'true');
+      if (btnLabel) btnLabel.textContent = 'Sending…';
+      if (btnIcon) btnIcon.classList.add('hidden');
+      if (btnSpinner) btnSpinner.classList.remove('hidden');
+
+      // Simulate network delay
+      setTimeout(() => {
+        if (formContainer) formContainer.classList.add('hidden');
+        if (successMsg) successMsg.classList.remove('hidden');
+      }, 1400);
+    });
+  });
+</script>

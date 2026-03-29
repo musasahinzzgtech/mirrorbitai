@@ -1,0 +1,66 @@
+---
+import { blogPosts } from '../data/blogPosts.js';
+const recent = blogPosts.slice(0, 3);
+---
+
+<section class="py-24 px-6 lg:px-10 apple-section-alt">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="flex justify-between items-end mb-12">
+      <div>
+        <p class="text-[#1D1D1F] text-[12px] font-medium tracking-[0.1em] uppercase mb-3">
+          Newsroom
+        </p>
+        <h2 class="headline-section text-[40px] text-[#1D1D1F]">Latest from our blog</h2>
+      </div>
+      <a
+        href="/blog"
+        class="hidden sm:inline-flex items-center gap-1 text-[#1D1D1F] text-[14px] hover:opacity-75 transition-opacity"
+      >
+        See all
+        <span
+          class="material-symbols-outlined"
+          style="font-size: 15px; font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;"
+        >chevron_right</span>
+      </a>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {recent.map((post) => (
+        <a href={`/blog/${post.slug}`} class="blog-card group">
+          <!-- Gradient thumbnail -->
+          <div
+            class={`h-44 bg-gradient-to-br ${post.gradient} flex items-end p-5`}
+          >
+            <span
+              class="text-[11px] font-medium text-white/90 bg-black/20 px-3 py-1 rounded-full backdrop-blur-sm"
+            >
+              {post.category}
+            </span>
+          </div>
+          <div class="p-6 space-y-3">
+            <h3
+              class="text-[17px] font-semibold text-[#1D1D1F] tracking-tight leading-snug group-hover:text-[#1D1D1F] transition-colors"
+              style="letter-spacing: -0.02em;"
+            >
+              {post.title}
+            </h3>
+            <p class="text-[14px] text-[#6E6E73] leading-relaxed" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+              {post.excerpt}
+            </p>
+            <div class="flex items-center justify-between pt-1">
+              <p class="text-[12px] text-[#AEAEB2]">{post.date}</p>
+              <p class="text-[12px] text-[#AEAEB2]">{post.readTime}</p>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Mobile link -->
+    <div class="mt-8 sm:hidden text-center">
+      <a href="/blog" class="text-[#1D1D1F] text-[15px]">See all articles →</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const stats = [
+  { value: '2M+',   label: 'Meals analyzed by SlayCal' },
+  { value: '500+',  label: 'Restaurants on Restaurant Managment System' },
+  { value: '99.9%', label: 'Platform uptime SLA' },
+  { value: '40+',   label: 'Countries reached' },
+];
+
+const values = [
+  {
+    icon: 'precision_manufacturing',
+    title: 'Precision',
+    desc: 'Every pixel, every inference, every API response — we hold ourselves to a standard that most teams consider obsessive.',
+  },
+  {
+    icon: 'favorite',
+    title: 'Human-Centered',
+    desc: 'Technology exists to serve people. We design from the user backward, always asking what makes life genuinely better.',
+  },
+  {
+    icon: 'public',
+    title: 'Open',
+    desc: 'We believe in transparency — in our models, our pricing, and our roadmaps. Our users are partners, not captives.',
+  },
+];
+---
+
+<Layout
+  title="About — Mirrorbit AI"
+  description="Learn about Mirrorbit AI's mission to build intelligent, precision AI tools for businesses and consumers."
+>
+  <NavBar />
+  <main class="pt-[52px]">
+
+    <!-- Hero -->
+    <section class="py-24 px-6 lg:px-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-[#1D1D1F] text-[12px] font-medium tracking-[0.1em] uppercase mb-4">
+          About Mirrorbit AI
+        </p>
+        <h1 class="headline-display text-[56px] lg:text-[72px] text-[#1D1D1F] mb-6">
+          Building intelligence<br />that matters.
+        </h1>
+        <p class="body-copy text-[19px] max-w-2xl mx-auto">
+          We are a team of engineers, designers, and AI researchers on a mission to make
+          sophisticated artificial intelligence accessible, reliable, and beautiful.
+        </p>
+      </div>
+    </section>
+
+    <div class="apple-divider max-w-7xl mx-auto px-6 lg:px-10"></div>
+
+    <!-- Mission + Stats -->
+    <section class="py-24 px-6 lg:px-10">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="text-[#1D1D1F] text-[12px] font-medium tracking-[0.1em] uppercase mb-4">
+            Mission
+          </p>
+          <h2 class="headline-section text-[40px] text-[#1D1D1F] mb-6">
+            Precision tools for a digital-first world.
+          </h2>
+          <p class="text-[17px] text-[#6E6E73] leading-relaxed mb-5">
+            At Mirrorbit AI, we believe that the best AI products are invisible — they feel
+            natural, instant, and inevitable. Our work spans computer vision, large language
+            models, and real-time inference systems.
+          </p>
+          <p class="text-[17px] text-[#6E6E73] leading-relaxed">
+            Founded with the conviction that software should make life measurably better, we ship
+            products used by hundreds of thousands of people every day.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          {stats.map((s) => (
+            <div class="feature-card">
+              <p class="text-[38px] font-bold text-[#1D1D1F]" style="letter-spacing: -0.04em; line-height: 1;">
+                {s.value}
+              </p>
+              <p class="text-[14px] text-[#6E6E73] mt-2 leading-snug">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="apple-divider max-w-7xl mx-auto px-6 lg:px-10"></div>
+
+    <!-- Values -->
+    <section class="py-24 px-6 lg:px-10 apple-section-alt">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-14">
+          <p class="text-[#1D1D1F] text-[12px] font-medium tracking-[0.1em] uppercase mb-4">Values</p>
+          <h2 class="headline-section text-[40px] text-[#1D1D1F]">What we stand for.</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {values.map((v) => (
+            <div class="feature-card space-y-4">
+              <div
+                class="w-11 h-11 rounded-2xl bg-white flex items-center justify-center"
+                style="box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid rgba(210,210,215,0.7);"
+              >
+                <span
+                  class="material-symbols-outlined text-[#1D1D1F]"
+                  style="font-size: 20px; font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;"
+                >
+                  {v.icon}
+                </span>
+              </div>
+              <h4 class="text-[19px] font-semibold text-[#1D1D1F] tracking-tight">{v.title}</h4>
+              <p class="text-[15px] text-[#6E6E73] leading-relaxed">{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="apple-divider max-w-7xl mx-auto px-6 lg:px-10"></div>
+
+    <!-- CTA -->
+    <section class="py-24 px-6 lg:px-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="headline-section text-[40px] text-[#1D1D1F] mb-4">
+          Want to work together?
+        </h2>
+        <p class="body-copy text-[17px] mb-8">
+          We're always looking for exceptional people and interesting problems.
+        </p>
+        <a href="/contact" class="apple-btn-dark">
+          Get in Touch
+          <span
+            class="material-symbols-outlined"
+            style="font-size: 17px; font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;"
+          >arrow_forward</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

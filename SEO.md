@@ -1,11 +1,13 @@
 # Mirrorbit AI — SEO Configuration
 
 ## Overview
+
 This document outlines the SEO strategy and implementation for the Mirrorbit AI website.
 
 ## Core SEO Elements
 
 ### 1. **Meta Tags**
+
 - ✅ Title tag (60 chars): "Mirrorbit AI | Building the Future with Artificial Intelligence"
 - ✅ Meta description (160 chars): "Mirrorbit AI creates intelligent, intuitive applications that transform how businesses operate and how people live."
 - ✅ Viewport tag: Responsive design ready
@@ -13,24 +15,28 @@ This document outlines the SEO strategy and implementation for the Mirrorbit AI 
 - ✅ Robots meta: `index, follow`
 
 ### 2. **Open Graph (Social Sharing)**
+
 - ✅ og:title, og:description, og:type
 - ✅ og:url (canonical), og:image
 - ✅ twitter:card, twitter:title, twitter:description, twitter:image
 - og:image should be a 1200x630px image (add to `/public/og-image.jpg`)
 
 ### 3. **Structured Data (JSON-LD)**
+
 - ✅ Organization schema
 - ✅ WebSite schema (with SearchAction)
-- ✅ Product schemas (SlayCal, AI QRMenu)
+- ✅ Product schemas (SlayCal, Restaurant Managment System)
 - ✅ ContactPoint schema
 
 ### 4. **Sitemap & Robots**
+
 - ✅ `/sitemap.xml` — Updated weekly
 - ✅ `/robots.txt` — Allows all crawlers, references sitemap
 
 ## Performance Optimization
 
 ### 1. **Page Speed**
+
 - ✅ Tailwind CSS (optimized, purged in build)
 - ✅ Image lazy loading (loading="lazy")
 - ✅ Hero image: eager loading (loading="eager")
@@ -38,6 +44,7 @@ This document outlines the SEO strategy and implementation for the Mirrorbit AI 
 - **Recommendation:** Add Cache-Control headers (max-age=31536000 for assets)
 
 ### 2. **Core Web Vitals**
+
 - **LCP (Largest Contentful Paint):** Hero section image
   - Preload hero image in Layout.astro: `<link rel="preload" as="image" href="..." />`
 - **FID (First Input Delay):** Minimal JS (only lang switcher, mobile menu)
@@ -56,6 +63,7 @@ This document outlines the SEO strategy and implementation for the Mirrorbit AI 
 ## Keywords & Content
 
 ### Primary Keywords
+
 - "AI nutrition app"
 - "meal recognition AI"
 - "food scanning"
@@ -63,12 +71,14 @@ This document outlines the SEO strategy and implementation for the Mirrorbit AI 
 - "restaurant menu digitalization"
 
 ### Secondary Keywords
+
 - "health tracking app"
 - "smart menu system"
 - "food macro calculator"
 - "AI chef assistant"
 
 ### Content Strategy
+
 - Each section targets a different keyword cluster
 - Internal linking: "Learn More" → "Why Mirrorbit?"
 - CTAs guide users through the funnel
@@ -76,14 +86,17 @@ This document outlines the SEO strategy and implementation for the Mirrorbit AI 
 ## Multi-Language SEO (i18n)
 
 Current setup:
+
 - **Default:** English (`en`)
 - **Alternative:** Turkish (`tr`)
 
 ### Best Practices Implemented
+
 - ✅ `lang` attribute on `<html>` (dynamically set)
 - ✅ Translations properly keyed for each language
 
 ### Future Improvements
+
 - Add hreflang tags for search engines (once multi-page URLs exist):
   ```html
   <link rel="alternate" hreflang="en" href="https://mirrorbitai.com/" />
@@ -94,6 +107,7 @@ Current setup:
 ## Analytics & Tracking
 
 ### Recommended Setup
+
 1. **Google Analytics 4:**
    - Add Global Site Tag (gtag.js)
    - Track page views, events (CTA clicks)
@@ -110,6 +124,7 @@ Current setup:
    - Track button clicks, form submissions
 
 ### Example GA4 Implementation:
+
 ```astro
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>

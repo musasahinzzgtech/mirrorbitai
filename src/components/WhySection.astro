@@ -5,63 +5,76 @@ const features = [
     title: 'Speed',
     description:
       'Real-time AI processing that delivers instant results to end-users, optimized for low-latency interactions.',
+    i18n: { title: 'why.speed.title', desc: 'why.speed.desc' },
   },
   {
     icon: 'verified',
     title: 'Accuracy',
     description:
       'State-of-the-art computer vision and machine learning models trained on proprietary high-quality datasets.',
+    i18n: { title: 'why.accuracy.title', desc: 'why.accuracy.desc' },
   },
   {
     icon: 'draw',
     title: 'Design',
     description:
       'Beautiful, frictionless user interfaces built for everyday use, following our high-precision optical framework.',
+    i18n: { title: 'why.design.title', desc: 'why.design.desc' },
   },
 ];
 ---
 
-<section id="about" class="py-16 px-8 relative overflow-hidden scroll-mt-16">
-  <div class="max-w-7xl mx-auto relative z-10">
-    <!-- Section Header -->
-    <div class="text-center mb-12">
+<section id="about" class="py-24 px-6 lg:px-10 scroll-mt-16">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <p class="text-[#1D1D1F] text-[12px] font-medium tracking-[0.1em] uppercase mb-3">
+        Why Mirrorbit
+      </p>
       <h2
-        class="text-2xl md:text-3xl font-headline font-extrabold tracking-tight mb-3 text-gray-900"
+        class="headline-section text-[40px] lg:text-[48px] text-[#1D1D1F] max-w-2xl mx-auto"
         data-i18n="why.title"
       >
         The Mirrorbit Advantage
       </h2>
-      <p class="text-sm text-gray-900-variant max-w-xl mx-auto" data-i18n="why.subtitle">
-        We don't just build apps; we engineer precision instruments powered by the latest
+      <p
+        class="body-copy text-[17px] max-w-lg mx-auto mt-4"
+        data-i18n="why.subtitle"
+      >
+        We don't just build apps — we engineer precision instruments powered by the latest
         breakthroughs in neural technology.
       </p>
     </div>
 
-    <!-- Feature Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {
-        features.map((feature) => (
-          <div class="p-6 rounded-xl bg-white border border-gray-100 hover:border-gray-200 hover:shadow-md transition-all duration-300 flex flex-col items-center text-center space-y-4">
-            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
-              <span class="material-symbols-outlined text-xl text-gray-900">
-                {feature.icon}
-              </span>
-            </div>
-            <h4
-              class="text-base font-headline font-bold text-gray-900"
-              data-i18n={`why.${feature.title.toLowerCase()}.title`}
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {features.map((f) => (
+        <div class="feature-card space-y-4">
+          <div
+            class="w-11 h-11 rounded-2xl bg-white flex items-center justify-center"
+            style="box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid rgba(210,210,215,0.7);"
+          >
+            <span
+              class="material-symbols-outlined text-[#1D1D1F]"
+              style="font-size: 20px; font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;"
             >
-              {feature.title}
-            </h4>
-            <p
-              class="text-sm text-gray-900-variant leading-relaxed"
-              data-i18n={`why.${feature.title.toLowerCase()}.desc`}
-            >
-              {feature.description}
-            </p>
+              {f.icon}
+            </span>
           </div>
-        ))
-      }
+          <h4
+            class="text-[19px] font-semibold text-[#1D1D1F] tracking-tight"
+            data-i18n={f.i18n.title}
+          >
+            {f.title}
+          </h4>
+          <p
+            class="text-[15px] text-[#6E6E73] leading-relaxed"
+            data-i18n={f.i18n.desc}
+          >
+            {f.description}
+          </p>
+        </div>
+      ))}
     </div>
   </div>
 </section>

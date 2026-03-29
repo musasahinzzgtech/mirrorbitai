@@ -1,38 +1,102 @@
 ---
-const links = [
-  { label: 'footer.privacy', href: '#' },
-  { label: 'footer.terms', href: '#' },
-  { label: 'footer.twitter', href: '#' },
-  { label: 'footer.linkedin', href: '#' },
-];
+const year = new Date().getFullYear();
 ---
 
-<footer class="w-full py-8 border-t border-gray-100 bg-white">
-  <div
-    class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-6 items-center"
-  >
-    <!-- Brand -->
-    <div class="space-y-2">
-      <div class="text-base font-bold text-gray-900 font-headline">Mirrorbit AI</div>
-      <p class="text-xs text-gray-400 max-w-sm font-body" data-i18n="footer.copy">
-        © {new Date().getFullYear()} Mirrorbit AI. All rights reserved. Precision software for a
-        digital-first world.
-      </p>
-    </div>
+<footer style="background: #F5F5F7; border-top: 1px solid #D2D2D7;">
+  <!-- Main columns -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14">
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10">
+      <!-- Brand -->
+      <div class="col-span-2 lg:col-span-1">
+        <p class="text-[15px] font-semibold text-[#1D1D1F] mb-3" style="letter-spacing: -0.02em;">
+          Mirrorbit AI
+        </p>
+        <p class="text-[13px] text-[#6E6E73] leading-relaxed max-w-[160px]" data-i18n="footer.copy">
+          Precision AI tools for a digital-first world.
+        </p>
+      </div>
 
-    <!-- Footer Links -->
-    <div class="flex flex-wrap md:justify-end gap-6">
-      {
-        links.map((link) => (
-          <a
-            href={link.href}
-            class="text-xs text-gray-400 hover:text-gray-900 transition-colors font-body"
-            data-i18n={link.label}
-          >
-            {link.label}
-          </a>
-        ))
-      }
+      <!-- Products -->
+      <div>
+        <p class="text-[11px] font-semibold text-[#1D1D1F] uppercase tracking-wider mb-4">Products</p>
+        <ul class="space-y-3">
+          <li>
+            <a href="https://slaycal.com/" target="_blank" rel="noopener" class="text-[13px] text-[#6E6E73] hover:text-[#1D1D1F] transition-colors">SlayCal</a>
+          </li>
+          <li>
+            <a href="https://restoranqrmenum.com/" target="_blank" rel="noopener" class="text-[13px] text-[#6E6E73] hover:text-[#1D1D1F] transition-colors">Restaurant Managment System</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <p class="text-[11px] font-semibold text-[#1D1D1F] uppercase tracking-wider mb-4">Services</p>
+        <ul class="space-y-3">
+          <li>
+            <a href="/services" class="text-[13px] text-[#6E6E73] hover:text-[#1D1D1F] transition-colors">AI Consulting</a>
+          </li>
+          <li>
+            <a href="/services" class="text-[13px] text-[#6E6E73] hover:text-[#1D1D1F] transition-colors">Custom Development</a>
+          </li>
+          <li>
+            <a href="/services" class="text-[13px] text-[#6E6E73] hover:text-[#1D1D1F] transition-colors">API Integration</a>
+          </li>
+          <li>
+            <a href="/services" class="text-[13px] text-[#6E6E73] hover:text-[#1D1D1F] transition-colors">MLOps</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <p class="text-[11px] font-semibold text-[#1D1D1F] uppercase tracking-wider mb-4">Company</p>
+        <ul class="space-y-3">
+          <li>
+            <a href="/about" class="text-[13px] text-[#6E6E73] hover:text-[#1D1D1F] transition-colors">About</a>
+          </li>
+          <li>
+            <a href="/blog" class="text-[13px] text-[#6E6E73] hover:text-[#1D1D1F] transition-colors">Blog</a>
+          </li>
+          <li>
+            <a href="/contact" class="text-[13px] text-[#6E6E73] hover:text-[#1D1D1F] transition-colors">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Connect -->
+      <div>
+        <p class="text-[11px] font-semibold text-[#1D1D1F] uppercase tracking-wider mb-4">Connect</p>
+        <ul class="space-y-3">
+          <li>
+            <a href="#" class="text-[13px] text-[#6E6E73] hover:text-[#1D1D1F] transition-colors" data-i18n="footer.twitter">
+              Twitter
+            </a>
+          </li>
+          <li>
+            <a href="#" class="text-[13px] text-[#6E6E73] hover:text-[#1D1D1F] transition-colors" data-i18n="footer.linkedin">
+              LinkedIn
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div style="border-top: 1px solid #D2D2D7;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <p class="text-[12px] text-[#6E6E73]">
+        Copyright &copy; {year} Mirrorbit AI. All rights reserved.
+      </p>
+      <div class="flex gap-6">
+        <a href="#" class="text-[12px] text-[#6E6E73] hover:text-[#1D1D1F] transition-colors" data-i18n="footer.privacy">
+          Privacy Policy
+        </a>
+        <a href="#" class="text-[12px] text-[#6E6E73] hover:text-[#1D1D1F] transition-colors" data-i18n="footer.terms">
+          Terms of Use
+        </a>
+      </div>
     </div>
   </div>
 </footer>

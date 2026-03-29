@@ -1,0 +1,199 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const services = [
+  {
+    icon: 'psychology',
+    title: 'AI Strategy & Consulting',
+    description:
+      'We help businesses identify where AI creates genuine leverage — then build a clear roadmap to capture it. From discovery workshops to production planning.',
+    tags: ['Strategy', 'Workshops', 'Roadmapping'],
+  },
+  {
+    icon: 'code',
+    title: 'Custom AI Development',
+    description:
+      'End-to-end development of AI-powered products. We own the full stack: model selection, fine-tuning, inference optimization, and product UI.',
+    tags: ['Computer Vision', 'LLMs', 'Inference'],
+  },
+  {
+    icon: 'hub',
+    title: 'API & Integration Services',
+    description:
+      'Seamlessly integrate our AI models into your existing infrastructure via REST APIs, webhooks, and SDKs with dedicated enterprise support.',
+    tags: ['REST API', 'SDKs', 'Webhooks'],
+  },
+  {
+    icon: 'monitoring',
+    title: 'MLOps & Model Management',
+    description:
+      'Deploy, monitor, and continuously improve your ML models in production. We handle versioning, A/B testing, and drift detection.',
+    tags: ['MLOps', 'Monitoring', 'CI/CD'],
+  },
+  {
+    icon: 'dataset',
+    title: 'Data Services',
+    description:
+      'High-quality data pipelines, annotation, and synthetic data generation for training robust, real-world AI models that generalize well.',
+    tags: ['Data Pipelines', 'Annotation', 'Synthetic Data'],
+  },
+  {
+    icon: 'school',
+    title: 'AI Training & Enablement',
+    description:
+      'Equip your team with practical AI skills. Tailored workshops on prompt engineering, fine-tuning, and AI product management.',
+    tags: ['Workshops', 'Certification', 'On-site'],
+  },
+];
+
+const process = [
+  {
+    step: '01',
+    title: 'Discover',
+    desc: 'We map your problem space, data assets, and success criteria in a focused discovery workshop.',
+  },
+  {
+    step: '02',
+    title: 'Design',
+    desc: 'Architecture, model selection, and prototype. We validate assumptions before writing production code.',
+  },
+  {
+    step: '03',
+    title: 'Build',
+    desc: 'Rapid, iterative development with weekly demos. You see meaningful progress at every stage.',
+  },
+  {
+    step: '04',
+    title: 'Scale',
+    desc: 'Launch, monitor, and continuously improve. We stay engaged long after the first deployment.',
+  },
+];
+---
+
+<Layout
+  title="Services — Mirrorbit AI"
+  description="AI consulting, custom development, and integration services from Mirrorbit AI."
+>
+  <NavBar />
+  <main class="pt-[52px]">
+
+    <!-- Hero -->
+    <section class="py-24 px-6 lg:px-10">
+      <div class="max-w-7xl mx-auto">
+        <div class="max-w-3xl">
+          <p class="text-[#1D1D1F] text-[12px] font-medium tracking-[0.1em] uppercase mb-4">
+            Services
+          </p>
+          <h1 class="headline-display text-[56px] lg:text-[72px] text-[#1D1D1F] mb-6">
+            AI built to your<br />exact specification.
+          </h1>
+          <p class="body-copy text-[19px] max-w-xl">
+            From strategy to deployment, we work alongside your team to build AI that creates
+            lasting competitive advantage.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="apple-divider max-w-7xl mx-auto px-6 lg:px-10"></div>
+
+    <!-- Services Grid -->
+    <section class="py-24 px-6 lg:px-10 apple-section-alt">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {services.map((s) => (
+            <div class="feature-card space-y-4">
+              <div
+                class="w-11 h-11 rounded-2xl bg-white flex items-center justify-center"
+                style="box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid rgba(210,210,215,0.7);"
+              >
+                <span
+                  class="material-symbols-outlined text-[#1D1D1F]"
+                  style="font-size: 20px; font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;"
+                >
+                  {s.icon}
+                </span>
+              </div>
+              <div>
+                <h3 class="text-[19px] font-semibold text-[#1D1D1F] tracking-tight mb-2">
+                  {s.title}
+                </h3>
+                <p class="text-[15px] text-[#6E6E73] leading-relaxed">{s.description}</p>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-1">
+                {s.tags.map((tag) => (
+                  <span
+                    class="text-[12px] text-[#6E6E73] bg-white px-2.5 py-1 rounded-full"
+                    style="border: 1px solid #D2D2D7;"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="apple-divider max-w-7xl mx-auto px-6 lg:px-10"></div>
+
+    <!-- Process -->
+    <section class="py-24 px-6 lg:px-10">
+      <div class="max-w-7xl mx-auto">
+        <div class="mb-14">
+          <p class="text-[#1D1D1F] text-[12px] font-medium tracking-[0.1em] uppercase mb-3">
+            How We Work
+          </p>
+          <h2 class="headline-section text-[40px] text-[#1D1D1F]">Our process.</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-0 md:divide-x divide-[#D2D2D7]">
+          {process.map((p) => (
+            <div class="md:px-8 py-6 first:pl-0 last:pr-0">
+              <p class="text-[11px] font-semibold text-[#AEAEB2] tracking-wider mb-5">{p.step}</p>
+              <h4 class="text-[19px] font-semibold text-[#1D1D1F] tracking-tight mb-2">{p.title}</h4>
+              <p class="text-[15px] text-[#6E6E73] leading-relaxed">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-8 px-6 lg:px-10 pb-24">
+      <div class="max-w-7xl mx-auto">
+        <div
+          class="rounded-[32px] bg-[#1D1D1F] px-8 md:px-16 py-16 text-center relative overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 pointer-events-none"
+            style="background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,113,227,0.28), transparent);"
+          ></div>
+          <div class="relative z-10">
+            <h2 class="headline-section text-[40px] text-white mb-4">
+              Ready to start a project?
+            </h2>
+            <p class="text-white/60 text-[17px] mb-8 max-w-md mx-auto">
+              Tell us what you're building. We'll tell you how we can help.
+            </p>
+            <a
+              href="/contact"
+              class="bg-white text-[#1D1D1F] rounded-full px-8 py-3.5 text-[15px] font-medium hover:bg-white/90 transition-colors inline-flex items-center gap-2"
+            >
+              Start a Conversation
+              <span
+                class="material-symbols-outlined"
+                style="font-size: 17px; font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;"
+              >arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
