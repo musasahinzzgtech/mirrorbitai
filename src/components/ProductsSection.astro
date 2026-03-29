@@ -15,16 +15,16 @@ const products = [
       { icon: 'target', label: 'Smart Goals' },
       { icon: 'water_drop', label: 'Hydration' },
     ],
-    featureColor: 'primary',
+    featureColor: 'gray-700',
     cta: { label: 'View SlayCal', icon: 'smartphone' },
     ctaClass:
-      'w-full bg-surface-container-highest hover:bg-primary hover:text-on-primary-fixed border border-outline-variant transition-all py-4 rounded-lg font-bold flex items-center justify-center gap-2',
+      'w-full bg-gray-100 hover:bg-gray-900 hover:text-white text-gray-900 border border-gray-200 transition-all py-2.5 rounded-lg font-bold flex items-center justify-center gap-2 text-sm',
   },
   {
     id: 'qrmenu',
     name: 'AI QRMenu',
     badge: 'B2B',
-    badgeColor: 'tertiary',
+    badgeColor: 'secondary',
     description:
       'Transform printed menus into digital experiences in seconds. Snap a photo, let AI extract the dishes, and launch instantly with real-time order tracking.',
     image:
@@ -35,56 +35,56 @@ const products = [
       { icon: 'monitoring', label: 'Live Tracking' },
       { icon: 'apartment', label: 'Multi-Branch' },
     ],
-    featureColor: 'tertiary',
+    featureColor: 'gray-700',
     cta: { label: 'Explore QRMenu Solutions', icon: 'rocket_launch' },
     ctaClass:
-      'w-full bg-tertiary-dim hover:bg-tertiary text-on-tertiary-fixed transition-all py-4 rounded-lg font-bold flex items-center justify-center gap-2',
+      'w-full bg-gray-900 hover:bg-black text-white transition-all py-2.5 rounded-lg font-bold flex items-center justify-center gap-2 text-sm',
   },
 ];
 ---
 
-<section id="products" class="py-24 px-8 bg-surface-container-low/50 scroll-mt-20">
+<section id="products" class="py-16 px-8 bg-gray-50 scroll-mt-16">
   <div class="max-w-7xl mx-auto">
     <!-- Section Header -->
-    <div class="mb-16">
+    <div class="mb-10">
       <h2
-        class="text-4xl font-headline font-extrabold tracking-tight mb-4 text-on-surface"
+        class="text-2xl font-headline font-extrabold tracking-tight mb-3 text-gray-900"
         data-i18n="products.title"
       >
         Our Flagship Innovations
       </h2>
-      <div class="h-1.5 w-24 bg-primary rounded-full"></div>
+      <div class="h-0.5 w-12 bg-gray-900 rounded-full"></div>
     </div>
 
     <!-- Product Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {
         products.map((product) => (
-          <article class="group relative bg-surface-container rounded-xl overflow-hidden hover:bg-surface-container-high transition-colors duration-500">
+          <article class="group relative bg-white rounded-xl overflow-hidden border border-gray-100 hover:border-gray-200 hover:shadow-md transition-all duration-500">
             <!-- Product Image -->
             <div class="aspect-video overflow-hidden">
               <img
                 src={product.image}
                 alt={product.imageAlt}
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"
               />
             </div>
 
             <!-- Product Body -->
-            <div class="p-8 space-y-6">
+            <div class="p-6 space-y-4">
               <!-- Title & Badge -->
               <div>
-                <h3 class="text-3xl font-headline font-bold mb-2 text-on-surface">
+                <h3 class="text-xl font-headline font-bold mb-1.5 text-gray-900">
                   {product.name}
                   <span
-                    class={`text-xs font-normal text-${product.badgeColor} border border-${product.badgeColor}/30 px-2 py-0.5 rounded ml-2 uppercase tracking-widest`}
+                    class="text-xs font-normal text-gray-500 border border-gray-200 px-2 py-0.5 rounded ml-2 uppercase tracking-widest"
                   >
                     {product.badge}
                   </span>
                 </h3>
                 <p
-                  class="text-on-surface-variant leading-relaxed"
+                  class="text-sm text-gray-900-variant leading-relaxed"
                   data-i18n={product.id === 'slaycal' ? 'slaycal.description' : 'qrmenu.description'}
                 >
                   {product.description}
@@ -92,17 +92,13 @@ const products = [
               </div>
 
               <!-- Feature Pills -->
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="grid grid-cols-3 gap-3">
                 {product.features.map((feature, idx) => (
-                  <div class="flex items-center gap-2 text-sm text-on-surface-variant bg-surface-variant/40 p-3 rounded-lg">
-                    <span
-                      class={`material-symbols-outlined text-${product.featureColor} text-lg`}
-                    >
+                  <div class="flex items-center gap-1.5 text-xs text-gray-600 bg-gray-50 p-2.5 rounded-lg border border-gray-100">
+                    <span class="material-symbols-outlined text-gray-700 text-base">
                       {feature.icon}
                     </span>
-                    <span
-                      data-i18n={`${product.id}.feature${idx + 1}`}
-                    >
+                    <span data-i18n={`${product.id}.feature${idx + 1}`}>
                       {feature.label}
                     </span>
                   </div>
@@ -111,7 +107,7 @@ const products = [
 
               <!-- CTA Button -->
               <button class={product.ctaClass} data-i18n={`${product.id}.cta`}>
-                <span class="material-symbols-outlined">{product.cta.icon}</span>
+                <span class="material-symbols-outlined text-base">{product.cta.icon}</span>
                 {product.cta.label}
               </button>
             </div>
